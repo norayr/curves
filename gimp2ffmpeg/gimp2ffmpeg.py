@@ -26,21 +26,26 @@ print('This is a tool to convert a color curves map from GIMP to a curves filter
 #file = input('Please input the absolute path to the GIMP Color Curve Preset File: ')
 #out = input('Please enter the output file (file will be overwritten if it exists): ')
    #replacing interactive mode with getopt arguments; -- noch
-   try:
-      opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
-   except getopt.GetoptError:
-      print 'gimp2ffmpeg.py -i <inputfile> -o <outputfile>'
-      sys.exit(2)
-   for opt, arg in opts:
-      if opt == '-h':
-         print 'gimp2ffmpeg.py -i <inputfile> -o <outputfile>'
-         sys.exit()
-      elif opt in ("-i", "--ifile"):
-         file = arg
-      elif opt in ("-o", "--ofile"):
-         out = arg
-   print 'Input file is "', file
-   print 'Output file is "', out
+file=''
+out=''
+if len(sys.argv)<2:
+  print ("gimp2ffmpeg.py -i <inputfile> -o <outputfile>")
+  sys.exit(2)
+try:
+   opts, args = getopt.getopt(sys.argv,"hi:o:",["ifile=","ofile="])
+except getopt.GetoptError:
+   print ("gimp2ffmpeg.py -i <inputfile> -o <outputfile>")
+   sys.exit(2)
+for opt, arg in opts:
+   if opt == '-h':
+      print ("gimp2ffmpeg.py -i <inputfile> -o <outputfile>")
+      sys.exit()
+   elif opt in ("-i", "--ifile"):
+      file = arg
+   elif opt in ("-o", "--ofile"):
+      out = arg
+print ('Input file is "'), file
+print ('Output file is "'), out
 
 #Open the curves file
 curvesfile = open(file,"r")
