@@ -70,4 +70,4 @@ command = commandPrelim + ' '.join(masterValues) + '":red="' + ' '.join(redValue
 
 print (out_file)
 with open(out_file, 'w') as out:
-    out.write("#ffmpeg -i $1 -ss 00:00:00 -t 00:00:10 \ \nffmpeg -i $1 \ \n-filter_complex " + command + ' \ \n-vcodec=libx264 $2\n\n')
+    out.write("#ffmpeg -i $1 -ss 00:00:00 -t 00:00:10 \\nffmpeg -i $1 \\n-filter_complex " + command + ' \\n-vcodec libx264 $2\n\n')
